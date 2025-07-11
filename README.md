@@ -31,5 +31,5 @@ This repository implements **Function 1: arccos(x)** for SOEN 6011 — Software 
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/<your-username>/arccos-function.git
+git clone https://github.com/ola-steeve/arccos-function.git
 cd arccos-function
