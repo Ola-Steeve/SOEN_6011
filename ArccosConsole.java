@@ -18,7 +18,7 @@ public class ArccosConsole {
             System.out.print("x = ");
             String token = scanner.nextLine().trim();
 
-            // ----- graceful exit ------------------------------------------
+            // -----exit ------------------------------------------
             if (token.equalsIgnoreCase("quit")) {
                 System.out.println("Goodbye!");
                 break;
