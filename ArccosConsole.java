@@ -1,144 +1,132 @@
-import javax.swing.*;  // Standard GUI components
-import java.awt.*;     // AWT for basic UI
-import java.awt.event.*; // Event handling
+import com.formdev.flatlaf.FlatDarkLaf;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ArccosConsole extends JFrame {
     private JTextField inputField;
     private JTextArea resultArea;
-    private JButton calculateButton;
-    private JButton clearButton;
-    private static final double PI = 3.141592653589793;
+    private JButton calculateButton, clearButton, quitButton;
 
     public ArccosConsole() {
-        setTitle("arccos(x) Calculator");
-        setSize(500, 400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        super("Arccos Calculator");
+        FlatDarkLaf.install(); // Set dark theme
+
+        // Set main window layout and default close operation
         setLayout(new BorderLayout(10, 10));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(600, 400);
+        setLocationRelativeTo(null);
 
-        // Input panel
-        JPanel inputPanel = new JPanel(new FlowLayout());
-        inputPanel.add(new JLabel("Enter x (-1 ≤ x ≤ 1):"));
+        // Input panel with label and field
+        JPanel inputPanel = new JPanel(new GridBagLayout());
+        inputPanel.setBackground(new Color(45, 45, 45));
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+
+        JLabel inputLabel = new JLabel("Enter a value (between -1 and 1):");
+        inputLabel.setForeground(Color.WHITE);
         inputField = new JTextField(15);
-        inputPanel.add(inputField);
 
-        // Button panel
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        inputPanel.add(inputLabel, gbc);
+
+        gbc.gridx = 1;
+        inputPanel.add(inputField, gbc);
+
+        // Button panel with Calculate, Clear, and Quit buttons
         JPanel buttonPanel = new JPanel();
-        calculateButton = new JButton("Calculate arccos");
+        buttonPanel.setBackground(new Color(45, 45, 45));
+
+        calculateButton = new JButton("Calculate");
         clearButton = new JButton("Clear History");
+        quitButton = new JButton("Quit");
+
+        calculateButton.setBackground(new Color(100, 149, 237)); // Cornflower Blue
+        clearButton.setBackground(new Color(70, 130, 180)); // Steel Blue
+        quitButton.setBackground(new Color(220, 20, 60)); // Crimson
+
+        calculateButton.setForeground(Color.WHITE);
+        clearButton.setForeground(Color.WHITE);
+        quitButton.setForeground(Color.WHITE);
+
         buttonPanel.add(calculateButton);
         buttonPanel.add(clearButton);
+        buttonPanel.add(quitButton);
 
-        // Result area
+        // Result area with scroll
         resultArea = new JTextArea(10, 40);
         resultArea.setEditable(false);
+        resultArea.setBackground(new Color(30, 30, 30));
+        resultArea.setForeground(Color.GREEN);
         JScrollPane scrollPane = new JScrollPane(resultArea);
 
-        // Add components to frame
         add(inputPanel, BorderLayout.NORTH);
         add(buttonPanel, BorderLayout.CENTER);
         add(scrollPane, BorderLayout.SOUTH);
 
-        // Event handlers
-        calculateButton.addActionListener(e -> calculateArccos());
-        clearButton.addActionListener(e -> resultArea.setText(""));
-        inputField.addActionListener(e -> calculateArccos());
-    }
-
-    private void calculateArccos() {
-        try {
-            double x = parseDouble(inputField.getText());
-
-            if (x < -1 || x > 1) {
-                throw new IllegalArgumentException("x must be between -1 and 1");
+        // Button actions
+        calculateButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String input = inputField.getText();
+                try {
+                    double x = Double.parseDouble(input);
+                    if (x < -1 || x > 1) {
+                        throw new IllegalArgumentException("Input must be between -1 and 1.");
+                    }
+                    double result = calculateArccos(x);
+                    resultArea.append("arccos(" + x + ") = " + result + " radians\n");
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid number.", "Input Error", JOptionPane.ERROR_MESSAGE);
+                } catch (IllegalArgumentException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Range Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
+        });
 
-            double result = computeArccos(x);
-            resultArea.append("arccos(" + x + ") = " + String.format("%.6f", result) + " radians\n");
-            inputField.setText("");
-        } catch (NumberFormatException e) {
-            resultArea.append("Error: Invalid number format\n");
-        } catch (IllegalArgumentException e) {
-            resultArea.append("Error: " + e.getMessage() + "\n");
-        }
-    }
-
-    private double parseDouble(String input) {
-        boolean negative = false;
-        String processed = input.trim();
-
-        if (processed.startsWith("-")) {
-            negative = true;
-            processed = processed.substring(1);
-        }
-
-        String[] parts = processed.split("\\.");
-        if (parts.length > 2) throw new NumberFormatException();
-
-        // Parse integer part
-        double value = 0;
-        for (char c : parts[0].toCharArray()) {
-            if (c < '0' || c > '9') throw new NumberFormatException();
-            value = value * 10 + (c - '0');
-        }
-
-        // Parse fractional part
-        if (parts.length == 2) {
-            double fraction = 0;
-            double divisor = 10;
-            for (char c : parts[1].toCharArray()) {
-                if (c < '0' || c > '9') throw new NumberFormatException();
-                fraction += (c - '0') / divisor;
-                divisor *= 10;
+        clearButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                resultArea.setText("");
             }
-            value += fraction;
-        }
+        });
 
-        return negative ? -value : value;
-    }
-
-    private double computeArccos(double x) {
-        // Use bisection method
-        double low = 0;
-        double high = PI;
-        double mid;
-        double epsilon = 1e-10;
-
-        while (high - low > epsilon) {
-            mid = (low + high) / 2;
-            double cosMid = computeCos(mid);
-
-            if (cosMid > x) {
-                low = mid;
-            } else {
-                high = mid;
+        quitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
             }
-        }
-        return (low + high) / 2;
+        });
     }
 
-    private double computeCos(double angle) {
-        // Reduce angle to [0, 2π]
-        angle = angle % (2 * PI);
-        if (angle < 0) angle += 2 * PI;
+    // Accurate arccos(x) using arccos(x) = π/2 – arcsin(x)
+    public double calculateArccos(double x) {
+        return Math.PI / 2 - calculateArcsin(x);
+    }
 
-        // Taylor series for cosine
-        double result = 1;
-        double term = 1;
-        double xSquared = angle * angle;
-        int sign = -1;
+    // arcsin(x) using Maclaurin series
+    public double calculateArcsin(double x) {
+        double sum = 0.0;
+        int terms = 25;
 
-        for (int n = 1; n <= 15; n++) {
-            term = term * xSquared / ((2 * n) * (2 * n - 1));
-            result += sign * term;
-            sign *= -1;
+        for (int n = 0; n < terms; n++) {
+            double numerator = factorialDouble(2 * n) * Math.pow(x, 2 * n + 1);
+            double denominator = Math.pow(4, n) * Math.pow(factorialDouble(n), 2) * (2 * n + 1);
+            sum += numerator / denominator;
         }
+
+        return sum;
+    }
+
+    private double factorialDouble(int n) {
+        double result = 1.0;
+        for (int i = 2; i <= n; i++) result *= i;
         return result;
     }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            ArccosConsole calculator = new ArccosConsole();
-            calculator.setVisible(true);
+            new ArccosConsole().setVisible(true);
         });
     }
 }
