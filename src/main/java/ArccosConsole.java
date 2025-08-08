@@ -195,13 +195,26 @@ public class ArccosConsole extends JFrame {
    * @return the arcsine of x in radians
    */
   public double calculateArcsin(double x) {
-    double sum = 0.0;
-    final int terms = 25;
+    // Handle edge cases directly for better accuracy
+    if (x == 1.0) {
+      return PI / 2;
+    }
+    if (x == -1.0) {
+      return -PI / 2;
+    }
+    if (x == 0.0) {
+      return 0.0;
+    }
 
-    for (int n = 0; n < terms; n++) {
-      double numerator = factorialDouble(2 * n) * power(x, 2 * n + 1);
-      double denominator = power(4, n) * power(factorialDouble(n), 2) * (2 * n + 1);
-      sum += numerator / denominator;
+    // Increased terms and optimized calculation
+    final int terms = 50;
+    double sum = x; // First term (n=0)
+    double term = x;
+
+    for (int n = 1; n < terms; n++) {
+      // Calculate term using iterative approach to avoid large factorials
+      term *= x * x * (2 * n - 1) * (2 * n - 1) / (2 * n * (2 * n + 1));
+      sum += term;
     }
 
     return sum;
