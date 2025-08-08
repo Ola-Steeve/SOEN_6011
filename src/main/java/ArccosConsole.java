@@ -45,7 +45,7 @@ public class ArccosConsole extends JFrame {
     JPanel inputPanel = new JPanel(new GridBagLayout());
     inputPanel.setBackground(new Color(45, 45, 45));
     GridBagConstraints gbc = new GridBagConstraints();
-    gbc.insets = new Insets(5, 5, 5, 5);
+    gbc.insets = new Insets(7, 5, 5, 5);
 
     JLabel inputLabel = new JLabel("Enter a value (between -1 and 1):");
     inputLabel.setForeground(Color.WHITE);
@@ -128,6 +128,7 @@ public class ArccosConsole extends JFrame {
     JButton button = new JButton(text);
     button.setBackground(bgColor);
     button.setForeground(Color.WHITE);
+
     return button;
   }
 
@@ -227,6 +228,8 @@ public class ArccosConsole extends JFrame {
    * @param exponent the exponent
    * @return base raised to the power of exponent
    */
+
+  @SuppressWarnings("PMD.UnusedPrivateMethod") // Used via reflection in tests
   private double power(double base, int exponent) {
     double result = 1.0;
     for (int i = 0; i < exponent; i++) {
@@ -241,6 +244,8 @@ public class ArccosConsole extends JFrame {
    * @param n the input number
    * @return factorial of n as double
    */
+
+  @SuppressWarnings("PMD.UnusedPrivateMethod") // Used via reflection in tests
   private double factorialDouble(int n) {
     double result = 1.0;
     for (int i = 2; i <= n; i++) {

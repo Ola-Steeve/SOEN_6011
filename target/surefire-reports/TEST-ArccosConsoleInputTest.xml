@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ArccosConsoleInputTest" time="5.544" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ArccosConsoleInputTest" time="24.675" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="24"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CA"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-24\bin"/>
-    <property name="sun.java.command" value="C:\Users\ekund\AppData\Local\Temp\surefire7005902625127374575\surefirebooter-20250808004209978_3.jar C:\Users\ekund\AppData\Local\Temp\surefire7005902625127374575 2025-08-08T00-42-09_815-jvmRun1 surefire-20250808004209978_1tmp surefire_0-20250808004209978_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\ekund\AppData\Local\Temp\surefire15401734596071393270\surefirebooter-20250808143326259_3.jar C:\Users\ekund\AppData\Local\Temp\surefire15401734596071393270 2025-08-08T14-33-26_074-jvmRun1 surefire-20250808143326259_1tmp surefire_0-20250808143326259_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\ekund\IdeaProjects\SOEN_6011\target\test-classes;C:\Users\ekund\IdeaProjects\SOEN_6011\target\classes;C:\Users\ekund\.m2\repository\com\formdev\flatlaf\3.2.5\flatlaf-3.2.5.jar;C:\Users\ekund\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.0\junit-jupiter-api-5.10.0.jar;C:\Users\ekund\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\ekund\.m2\repository\org\junit\platform\junit-platform-commons\1.10.0\junit-platform-commons-1.10.0.jar;C:\Users\ekund\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\ekund\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.0\junit-jupiter-engine-5.10.0.jar;C:\Users\ekund\.m2\repository\org\junit\platform\junit-platform-engine\1.10.0\junit-platform-engine-1.10.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\ekund\AppData\Local\Temp\surefire7005902625127374575\surefirebooter-20250808004209978_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\ekund\AppData\Local\Temp\surefire15401734596071393270\surefirebooter-20250808143326259_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="24.0.2+12-54"/>
@@ -59,7 +59,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="68.0"/>
   </properties>
-  <testcase name="handleCalculate_withInvalidNumber_showsError" classname="ArccosConsoleInputTest" time="2.826"/>
-  <testcase name="handleCalculate_withValidInput_appendsResult" classname="ArccosConsoleInputTest" time="0.026"/>
-  <testcase name="handleCalculate_withOutOfRangeNumber_showsError" classname="ArccosConsoleInputTest" time="2.657"/>
+  <testcase name="handleCalculate_withInvalidNumber_showsError" classname="ArccosConsoleInputTest" time="12.59"/>
+  <testcase name="handleCalculate_withValidInput_appendsResult" classname="ArccosConsoleInputTest" time="0.03"/>
+  <testcase name="handleCalculate_withOutOfRangeNumber_showsError" classname="ArccosConsoleInputTest" time="12.01"/>
 </testsuite>

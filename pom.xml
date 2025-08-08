@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>SOEN_6011</groupId>
   <artifactId>ArccosConsole</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
 
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
@@ -179,3 +179,5 @@
     </plugins>
   </build>
 </project>
+
+<!--end of the file-->
