@@ -1,7 +1,3 @@
-Sure! Here’s the README with the **commit message guidelines** section removed, keeping everything else as requested:
-
----
-
 # Arccos Function – SOEN 6011 Project (Design Document 1)
 
 This repository implements **Function 1: arccos(x)** for SOEN 6011 — Software Engineering Processes. The goal is to develop a mathematically sound, reliable, and user-friendly function to compute the inverse cosine of a number `x` ∈ \[–1, 1], with a graphical user interface and full error handling, following software engineering best practices.
