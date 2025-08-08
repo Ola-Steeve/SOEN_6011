@@ -227,6 +227,8 @@ public class ArccosConsole extends JFrame {
    * @param exponent the exponent
    * @return base raised to the power of exponent
    */
+
+  @SuppressWarnings("PMD.UnusedPrivateMethod") // Used via reflection in tests
   private double power(double base, int exponent) {
     double result = 1.0;
     for (int i = 0; i < exponent; i++) {
@@ -241,6 +243,8 @@ public class ArccosConsole extends JFrame {
    * @param n the input number
    * @return factorial of n as double
    */
+
+  @SuppressWarnings("PMD.UnusedPrivateMethod") // Used via reflection in tests
   private double factorialDouble(int n) {
     double result = 1.0;
     for (int i = 2; i <= n; i++) {
