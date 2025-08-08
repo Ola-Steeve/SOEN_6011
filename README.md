@@ -23,6 +23,26 @@ This repository implements **Function 1: arccos(x)** for SOEN 6011 — Software 
 
 ---
 
+## 📦 Semantic Versioning (SemVer)
+
+This project follows **Semantic Versioning 2.0.0** principles to clearly communicate the scope of changes in each release version.
+
+Version format: `MAJOR.MINOR.PATCH` (e.g., 1.1.1)
+
+| Version Part | Meaning                                         | When to Increment                                     |
+|--------------|------------------------------------------------|------------------------------------------------------|
+| **MAJOR**    | Breaking changes, incompatible API changes    | When you make incompatible API changes or big rewrites |
+| **MINOR**    | Backwards-compatible new features              | When you add functionality in a backwards-compatible manner |
+| **PATCH**    | Backwards-compatible bug fixes                  | When you fix bugs or make minor improvements without adding new features |
+
+### Example Versions
+
+- `1.0.0` — Initial stable release.
+- `1.1.0` — Added new feature in a backward-compatible way.
+- `1.1.1` — Fixed bugs and improved stability without new features.
+
+---
+
 ## ✅ Features
 
 * Validates numeric input from the user
@@ -44,44 +64,3 @@ This repository implements **Function 1: arccos(x)** for SOEN 6011 — Software 
 ```bash
 git clone https://github.com/Ola-Steeve/SOEN_6011.git
 cd SOEN_6011
-```
-
-### 2. Build the project with Maven
-
-```bash
-mvn clean install
-```
-
-### 3. Run the application
-
-```bash
-mvn exec:java -Dexec.mainClass="ArccosConsole"
-```
-
-Or run the compiled jar directly:
-
-```bash
-java -cp target/ArccosConsole-1.1.0.jar ArccosConsole
-```
-
----
-
-## 🛠️ Tools & Technologies
-
-* Java 17+
-* Maven (build & dependency management)
-* FlatLaf (modern dark-themed GUI)
-* Checkstyle (code style enforcement)
-* **PMD** (static code analysis for identifying common coding issues)
-* **SonarLint** (IDE static analysis integration for continuous feedback)
-* **JDB (Java Debugger)** (used for step-by-step debugging and inspecting runtime state)
-* Git & GitHub (version control & hosting)
-
----
-
-## 📊 Static Analysis & Debugging Snapshots
-
-* **PMD snapshots**: Included in `/docs/pmd-scan.png` showing rule checks and violations fixed.
-* **Checkstyle reports**: Available in `/docs/checkstyle-report.html`.
-* **JDB debugging session snapshots**: Included in `/docs/jdb-debug-session.png` demonstrating breakpoints and variable inspection during execution.
-

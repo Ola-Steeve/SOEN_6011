@@ -45,7 +45,7 @@ public class ArccosConsole extends JFrame {
     JPanel inputPanel = new JPanel(new GridBagLayout());
     inputPanel.setBackground(new Color(45, 45, 45));
     GridBagConstraints gbc = new GridBagConstraints();
-    gbc.insets = new Insets(5, 5, 5, 5);
+    gbc.insets = new Insets(7, 5, 5, 5);
 
     JLabel inputLabel = new JLabel("Enter a value (between -1 and 1):");
     inputLabel.setForeground(Color.WHITE);
@@ -128,6 +128,7 @@ public class ArccosConsole extends JFrame {
     JButton button = new JButton(text);
     button.setBackground(bgColor);
     button.setForeground(Color.WHITE);
+
     return button;
   }
 
